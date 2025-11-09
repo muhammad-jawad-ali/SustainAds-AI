@@ -75,6 +75,7 @@ router.post('/generate-video', async (req, res) => {
 /**
  * GET /api/download-video/:id
  * Download a generated video
+ * TODO: Add rate limiting in production to prevent abuse
  */
 router.get('/download-video/:id', async (req, res) => {
     try {

@@ -321,6 +321,32 @@ We welcome contributions! Here's how you can help:
 - Update documentation
 - Ensure all tests pass
 
+### Security Best Practices
+
+**For Production Deployment:**
+1. **Add Rate Limiting**: Install and configure `express-rate-limit` to prevent abuse
+   ```bash
+   npm install express-rate-limit
+   ```
+   Example implementation:
+   ```javascript
+   const rateLimit = require('express-rate-limit');
+   
+   const limiter = rateLimit({
+     windowMs: 15 * 60 * 1000, // 15 minutes
+     max: 100 // limit each IP to 100 requests per windowMs
+   });
+   
+   app.use('/api/', limiter);
+   ```
+
+2. **Environment Variables**: Never commit sensitive credentials
+3. **Input Validation**: Validate all user inputs on the backend
+4. **HTTPS**: Use SSL/TLS certificates in production
+5. **CORS**: Configure CORS to only allow trusted domains
+6. **File Upload Limits**: Set appropriate file size limits
+7. **Authentication**: Add user authentication if needed
+
 ---
 
 ## 🛠️ Technology Stack

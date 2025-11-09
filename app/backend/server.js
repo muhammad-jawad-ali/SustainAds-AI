@@ -30,6 +30,7 @@ app.get('/health', (req, res) => {
 });
 
 // Root endpoint
+// TODO: Add rate limiting in production (e.g., using express-rate-limit)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
