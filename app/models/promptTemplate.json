@@ -1,0 +1,54 @@
+{
+  "name": "SustainAds AI Prompt Template",
+  "version": "1.0.0",
+  "description": "Template for generating video ad scripts for climate-resilient local businesses",
+  "intro": "🌱 Introducing {{businessName}}",
+  "body": "A {{businessType}} committed to sustainability. {{description}} We're proud to support {{keywords}} and build a climate-resilient future for our community.",
+  "outro": "Visit {{businessName}} today and be part of the sustainable movement!",
+  "callToAction": "Learn more at {{website}} or visit us at {{location}}",
+  "voiceNotes": "Use a warm, friendly, and optimistic tone. Emphasize sustainability and community values. Keep energy high but authentic.",
+  "visualGuidelines": {
+    "style": "Modern, clean, eco-friendly aesthetics",
+    "colors": ["green", "earth tones", "natural colors"],
+    "footage": ["Local business shots", "Community scenes", "Nature elements", "Product/service highlights"],
+    "transitions": "Smooth and professional"
+  },
+  "duration": "30 seconds",
+  "structure": {
+    "opening": {
+      "duration": "5 seconds",
+      "content": "Hook viewer with business name and visual",
+      "example": "Eye-catching shot of storefront or product"
+    },
+    "main": {
+      "duration": "20 seconds",
+      "content": "Core message about business and sustainability",
+      "example": "Show business in action, highlight sustainable practices"
+    },
+    "closing": {
+      "duration": "5 seconds",
+      "content": "Call to action",
+      "example": "Contact information, website, location"
+    }
+  },
+  "customizationFields": [
+    "businessName",
+    "businessType",
+    "description",
+    "keywords",
+    "website",
+    "location"
+  ],
+  "examples": {
+    "restaurant": {
+      "intro": "🌱 Taste the difference at {{businessName}}",
+      "body": "A {{businessType}} serving fresh, locally-sourced organic ingredients. {{description}} Supporting local farmers and reducing our carbon footprint with every meal.",
+      "outro": "Visit {{businessName}} and savor sustainability!"
+    },
+    "retail": {
+      "intro": "🌱 Shop with purpose at {{businessName}}",
+      "body": "A {{businessType}} offering eco-friendly products for conscious consumers. {{description}} Every purchase supports sustainable practices and our local community.",
+      "outro": "Discover {{businessName}} - where shopping meets sustainability!"
+    }
+  }
+}

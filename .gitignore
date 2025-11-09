@@ -1,0 +1,86 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Build outputs
+dist/
+build/
+*.bundle.js
+
+# Media files (generated content)
+media/videos/outputs/*
+media/videos/temp/*
+media/audio/voiceovers/*
+!media/videos/outputs/.gitkeep
+!media/videos/temp/.gitkeep
+!media/audio/voiceovers/.gitkeep
+
+# Data files
+data/generations.log
+data/analytics/*
+data/user-data/*
+data/exports/*
+!data/.gitkeep
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Operating System files
+Thumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Python (if used)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+
+# Backup files
+*.bak
+*.backup
+*.old
