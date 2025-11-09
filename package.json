@@ -1,0 +1,41 @@
+{
+  "name": "sustainads-ai",
+  "version": "1.0.0",
+  "description": "AI-Powered Video Ad Generator for Climate-Resilient Local Businesses",
+  "main": "app/backend/server.js",
+  "scripts": {
+    "start": "node app/backend/server.js",
+    "dev": "nodemon app/backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "video",
+    "ads",
+    "sustainability",
+    "climate",
+    "local-business",
+    "marketing"
+  ],
+  "author": "SustainAds AI Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muhammad-jawad-ali/SustainAds-AI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/muhammad-jawad-ali/SustainAds-AI/issues"
+  },
+  "homepage": "https://github.com/muhammad-jawad-ali/SustainAds-AI#readme"
+}

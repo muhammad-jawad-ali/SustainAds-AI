@@ -1,0 +1,147 @@
+{
+  "name": "SustainAds AI Video Generation Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "webhook-video-generation",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-node",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Extract business data from webhook\nconst businessData = items[0].json;\n\nreturn [\n  {\n    json: {\n      businessName: businessData.businessName,\n      businessType: businessData.businessType,\n      description: businessData.description,\n      keywords: businessData.keywords,\n      timestamp: new Date().toISOString()\n    }\n  }\n];"
+      },
+      "id": "process-data-node",
+      "name": "Process Business Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "messages": {
+          "messageValues": [
+            {
+              "role": "system",
+              "message": "You are an expert at creating engaging 30-second video ad scripts for local businesses with a focus on sustainability and climate resilience."
+            },
+            {
+              "role": "user",
+              "message": "=Create a 30-second video ad script for {{$json.businessName}}, a {{$json.businessType}}. Description: {{$json.description}}. Keywords: {{$json.keywords}}. Include opening hook, main message, and call-to-action."
+            }
+          ]
+        }
+      },
+      "id": "generate-script-node",
+      "name": "Generate Script with AI",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "text": "={{$json.script}}",
+        "voice": "alloy",
+        "speed": 1.0
+      },
+      "id": "text-to-speech-node",
+      "name": "Text to Speech",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Combine audio with video footage\n// This would integrate with video generation API\nconst audioUrl = items[0].json.audioUrl;\nconst script = items[0].json.script;\n\nreturn [\n  {\n    json: {\n      status: 'processing',\n      audioUrl: audioUrl,\n      script: script,\n      message: 'Generating video with AI...',\n      timestamp: new Date().toISOString()\n    }\n  }\n];"
+      },
+      "id": "video-generation-node",
+      "name": "Generate Video",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"success\": true,\n  \"videoUrl\": \"{{$json.videoUrl}}\",\n  \"downloadUrl\": \"{{$json.downloadUrl}}\",\n  \"script\": {{$json.script}},\n  \"metadata\": {\n    \"duration\": \"30 seconds\",\n    \"format\": \"mp4\",\n    \"resolution\": \"1920x1080\",\n    \"generated\": \"{{$json.timestamp}}\"\n  }\n}"
+      },
+      "id": "respond-node",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1250, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Process Business Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Business Data": {
+      "main": [
+        [
+          {
+            "node": "Generate Script with AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Script with AI": {
+      "main": [
+        [
+          {
+            "node": "Text to Speech",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text to Speech": {
+      "main": [
+        [
+          {
+            "node": "Generate Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Video": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-09T05:15:00.000Z",
+  "versionId": "1"
+}
